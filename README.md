@@ -2,7 +2,9 @@
 
 Expose WireGuard as a SOCKS5 proxy in a Docker container.
 
-(For the same thing in OpenVPN, see [kizzx2/docker-openvpn-client-socks](https://github.com/kizzx2/docker-openvpn-client-socks))
+## What does this fork do?
+
+Add multiple arch support, and restored the "build ability" of the image.
 
 ## Why?
 
@@ -11,6 +13,7 @@ This is arguably the easiest way to achieve "app based" routing. For example, yo
 ## Usage
 
 Preferably, using `start` in this repository:
+
 ```bash
 bash start.sh /directory/containing/your/wireguard/conf/file
 ```
@@ -20,9 +23,9 @@ Alternatively, you can use `docker run` directly if you want to customize things
 ```bash
 docker run -it --rm --cap-add=NET_ADMIN \
     --name wireguard-socks-proxy \
-    --volume /directory/containing/your/wireguard/conf/file/:/etc/wireguard/:ro \
+    -v ${PWD}:/etc/wireguard/:ro \
     -p 1080:1080 \
-    kizzx2/wireguard-socks-proxy
+    ghcr.io/k0in/docker-wireguard-socks-proxy:main
 ```
 
 Then connect to SOCKS proxy through through `127.0.0.1:1080` (or `local.docker:1080` for Mac / docker-machine / etc.). For example:
