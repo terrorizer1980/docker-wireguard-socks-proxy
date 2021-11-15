@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+    proxy:
+        image: ghcr.io/k0in/docker-wireguard-socks-proxy:main
+        restart: always
+        ports:
+            - "1080:1080"
+        volumes:
+            - ./:/etc/wireguard/:ro # path to your config
+        cap_add:
+            - NET_ADMIN
