@@ -52,6 +52,6 @@ This can happen if your WireGuard configuration file includes an IPv6 address bu
 
 Try to add `--sysctl net.ipv6.conf.all.disable_ipv6=1` to your docker run parameters.
 
-### I cannot request https origins
+### I cannot request https origins / or cannot access proxy from external host
 
-yes this is a bug of mtu have a look at the [docker-compose.yml](docker-compose.yml) to fix it.
+ this is a bug with docker the docker network / mtu have a look at the [docker-compose.yml](docker-compose.yml) to fix it.
