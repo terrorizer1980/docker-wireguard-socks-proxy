@@ -25,7 +25,7 @@ docker run -it --rm --cap-add=NET_ADMIN \
     --name wireguard-socks-proxy \
     -v ${PWD}:/etc/wireguard/:ro \
     -p 1080:1080 \
-    ghcr.io/k0in/docker-wireguard-socks-proxy:main
+    ghcr.io/k0in/docker-wireguard-socks-proxy:latest
 ```
 
 Then connect to SOCKS proxy through through `127.0.0.1:1080` (or `local.docker:1080` for Mac / docker-machine / etc.). For example:
@@ -52,3 +52,6 @@ This can happen if your WireGuard configuration file includes an IPv6 address bu
 
 Try to add `--sysctl net.ipv6.conf.all.disable_ipv6=1` to your docker run parameters.
 
+### I cannot request https origins
+
+yes this is a bug of mtu have a look at the [docker-compose.yml](docker-compose.yml) to fix it.
